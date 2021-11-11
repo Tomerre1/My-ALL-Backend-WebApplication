@@ -20,12 +20,13 @@ def userAuthentication(request):
     return Response(None)
 
 @api_view(['POST'])
-def singUp(request):
+def signUp(request):
     serializer=UserSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data,status=status.HTTP_201_CREATED)
     return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
-
-#def updateUser(request):
+@api_view(['PUT'])
+def updateUser(request):
+    x=1
     
