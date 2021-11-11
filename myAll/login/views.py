@@ -1,7 +1,6 @@
 
 from .models import User
 from .serializers import UserSerializer
-
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -9,7 +8,6 @@ from rest_framework import status
 #token=5cbce175d45037d379e125dd7a65104063e8b7a5
 
 @api_view(['GET','POST'])
-
 def userList(request):
     if request.method == 'GET':
         users=User.objects.all()
