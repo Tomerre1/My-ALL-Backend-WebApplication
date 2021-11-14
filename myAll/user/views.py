@@ -28,5 +28,17 @@ def signUp(request):
     return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 @api_view(['PUT'])
 def updateUser(request):
-    x=1
+    if request.method == 'PUT':
+        user=User.objects.get(userId=int(request.data.get('userId')))
+        serializer=UserSerializer(user,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,status=status.HTTP_201_CREATED)
+    return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+@api_view(['GET'])
+def getAllUsers(request):
+    users=User.objects.all()
+    serializer= UserSerializer(users ,many=True)
+    print(serializer.data)
+    return Response(serializer.data)
     
