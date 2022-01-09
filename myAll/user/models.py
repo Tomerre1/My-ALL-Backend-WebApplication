@@ -6,8 +6,8 @@ class User(models.Model):
     fullname = models.CharField(max_length=50)
     password = models.CharField(max_length=40)
     userType=models.CharField(max_length=40,null=True,default=None)
-    parentId = models.IntegerField(default=None,null=True)
+    
 
     def __str__(self):
-        return 'full name:{0} ,mail: {1}, parent id: {2},type user:{3}'.format(self.fullname, self.mail,self.parentId,self.userType) 
+        return 'full name:{0} ,mail: {1},type user:{2}'.format(self.fullname, self.mail,self.userType) 
     
