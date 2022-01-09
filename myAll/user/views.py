@@ -1,4 +1,6 @@
+from step.serializers import StepForUserSerializer
 from .models import User
+from step.models import Step , StepForUser
 from .serializers import UserSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -7,11 +9,10 @@ from rest_framework import status
 
 @api_view(['POST'])
 def userAuthentication(request):
-    
-    userId=int(request.data.get('userId'))
+    mail=request.data.get('mail')
     password=request.data.get('password')
     try:
-        user = User.objects.get(userId=userId)
+        user = User.objects.get(mail=mail)
     except User.DoesNotExist:
         return Response(None)
     if user.password == password:
@@ -24,12 +25,17 @@ def signUp(request):
     serializer=UserSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
+        stepForUser(serializer.data)
         return Response(serializer.data,status=status.HTTP_201_CREATED)
     return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
 @api_view(['PUT'])
 def updateUser(request):
     if request.method == 'PUT':
-        user=User.objects.get(userId=int(request.data.get('userId')))
+        user=User.objects.get(mail=request.data.get('mail'))
         serializer=UserSerializer(user,data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -39,6 +45,17 @@ def updateUser(request):
 def getAllUsers(request):
     users=User.objects.all()
     serializer= UserSerializer(users ,many=True)
-    print(serializer.data)
     return Response(serializer.data)
+
+
+def stepForUser(user):
+    for step in Step.objects.all():
+        sfu=StepForUser(mail=user['mail'],
+                        levelNumber=step.levelNumber,
+                        stepNumber=step.stepNumber,
+                        description=step.description,
+                        date=step.date,
+                        requirements=step.requirements)
+        sfu.save()
+        
     
