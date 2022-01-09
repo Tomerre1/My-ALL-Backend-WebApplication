@@ -1,4 +1,4 @@
-from step.serializers import StepForUserSerializer
+
 from .models import User
 from step.models import Step, StepForUser
 from .serializers import UserSerializer
