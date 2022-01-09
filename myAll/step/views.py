@@ -16,7 +16,45 @@ def getPath(request):
     timeLine=path(mail)
     return Response(timeLine)
 
+@api_view(['POST'])
+def next(request):
+    mail=request.data.get('mail')
+    levelNumber=request.data.get('levelNumber')
+    stepNumber=request.data.get('stepNumber')
+    isNextLevel=request.data.get('isNextLevel')
+    if isNextLevel:
+        nextLevel=request.data.get('nextLevel')
 
+    newStep=(StepForUser.objects.filter(mail=mail).filter(levelNumber=levelNumber).filter(stepNumber=stepNumber)).first()
+    newStep.isCurrStep=True
+    newStep.save()
+
+    oldStep=StepForUser.objects.get(isCurrStep=True)
+    oldStep.isDone=True
+    oldStep.isCurrStep=False
+    oldStep.save()
+    timeLine=path(mail)
+    return Response(timeLine)
+
+@api_view(['POST'])
+def back(request):
+    mail=request.data.get('mail')
+    levelNumber=request.data.get('levelNumber')
+    stepNumber=request.data.get('stepNumber')
+    isNextLevel=request.data.get('isNextLevel')
+    if isNextLevel:
+        nextLevel=request.data.get('nextLevel')
+
+    newStep=(StepForUser.objects.filter(mail=mail).filter(levelNumber=levelNumber).filter(stepNumber=stepNumber)).first()
+    newStep.isCurrStep=True
+    newStep.isDone=False
+    newStep.save()
+
+    oldStep=StepForUser.objects.get(isCurrStep=True)
+    oldStep.isCurrStep=False
+    oldStep.save()
+    timeLine=path(mail)
+    return Response(timeLine)
 
 #-------------------help functions ------------------#
 def path(mail):
