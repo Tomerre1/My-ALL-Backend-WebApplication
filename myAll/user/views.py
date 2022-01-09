@@ -5,11 +5,6 @@ from .serializers import UserSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-<<<<<<< HEAD
-=======
-# token=5cbce175d45037d379e125dd7a65104063e8b7a5
-
->>>>>>> 878e248bb9a8748753c6277ee2765f56bd4e8b6d
 
 @api_view(['POST'])
 def userAuthentication(request):
@@ -20,15 +15,9 @@ def userAuthentication(request):
     except User.DoesNotExist:
         return Response('')
     if user.password == password:
-<<<<<<< HEAD
         serializer= UserSerializer(user)
         return Response(serializer.data,status=status.HTTP_201_CREATED)
     return Response('')
-=======
-        serializer = UserSerializer(user)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(None)
->>>>>>> 878e248bb9a8748753c6277ee2765f56bd4e8b6d
 
 
 @api_view(['POST'])
@@ -37,14 +26,8 @@ def signUp(request):
     if serializer.is_valid():
         serializer.save()
         stepForUser(serializer.data)
-<<<<<<< HEAD
         return Response(serializer.data,status=status.HTTP_201_CREATED)
     return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
-=======
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
->>>>>>> 878e248bb9a8748753c6277ee2765f56bd4e8b6d
 
 @api_view(['PUT'])
 def updateUser(request):
@@ -53,17 +36,10 @@ def updateUser(request):
         serializer = UserSerializer(user, data=request.data)
         if serializer.is_valid():
             serializer.save()
-<<<<<<< HEAD
             return Response(serializer.data,status=status.HTTP_201_CREATED)
     return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
     
-=======
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
->>>>>>> 878e248bb9a8748753c6277ee2765f56bd4e8b6d
 @api_view(['GET'])
 def getAllUsers(request):
     users = User.objects.all()
@@ -75,7 +51,6 @@ def getAllUsers(request):
 
 def stepForUser(user):
     for step in Step.objects.all():
-<<<<<<< HEAD
         sfu=StepForUser(mail=user['mail'],
                         levelNumber=step.levelNumber,
                         stepNumber=step.stepNumber,
@@ -88,12 +63,3 @@ def stepForUser(user):
     
         
     
-=======
-        sfu = StepForUser(mail=user['mail'],
-                          levelNumber=step.levelNumber,
-                          stepNumber=step.stepNumber,
-                          description=step.description,
-                          date=step.date,
-                          requirements=step.requirements)
-        sfu.save()
->>>>>>> 878e248bb9a8748753c6277ee2765f56bd4e8b6d
