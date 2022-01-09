@@ -29,7 +29,7 @@ def next(request):
     newStep.isCurrStep=True
     newStep.save()
 
-    oldStep=StepForUser.objects.get(isCurrStep=True)
+    oldStep=StepForUser.objects.filter(mail=mail).filter(isCurrStep=True).first()
     oldStep.isDone=True
     oldStep.isCurrStep=False
     oldStep.save()
@@ -50,7 +50,7 @@ def back(request):
     newStep.isDone=False
     newStep.save()
 
-    oldStep=StepForUser.objects.get(isCurrStep=True)
+    oldStep=StepForUser.objects.filter(mail=mail).filter(isCurrStep=True).first()
     oldStep.isCurrStep=False
     oldStep.save()
     timeLine=path(mail)
