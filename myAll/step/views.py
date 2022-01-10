@@ -126,6 +126,8 @@ def path(mail):
         levelsir=LevelSerializer(level).data
         if level.levelNumber <= currlevel:
             levelsir['isDone']=True
+        else:
+            levelsir['isDone']=False
         tempLevel=[levelsir,]
         stepOfLevel=allStep.filter(levelNumber=level.levelNumber)
         stepsOfLevelSir=StepForUserSerializer(stepOfLevel,many=True)
