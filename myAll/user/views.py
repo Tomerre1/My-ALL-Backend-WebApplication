@@ -32,7 +32,10 @@ def signUp(request):
 @api_view(['PUT'])
 def updateUser(request):
     if request.method == 'PUT':
-        user = User.objects.get(mail=request.data.get('mail'))
+        try:
+            user = User.objects.get(mail=request.data.get('mail'))
+        except User.DoesNotExist:
+            return Response('')
         serializer = UserSerializer(user, data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -45,6 +48,15 @@ def getAllUsers(request):
     users = User.objects.all()
     serializer = UserSerializer(users, many=True)
     return Response(serializer.data)
+    
+@api_view(['DELETE'])
+def deleteUser(request):
+    try:
+        user = User.objects.get(mail=request.data.get('mail'))
+    except User.DoesNotExist:
+        return Response({'message': 'ERROR'})
+    user.delete()
+    return Response({'message': 'deleted successfuly'})
 
 
 #-------------------help functions ------------------#

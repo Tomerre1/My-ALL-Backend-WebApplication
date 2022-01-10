@@ -34,7 +34,9 @@ def updateMedicine(request):
 
 @api_view(['DELETE'])
 def deleteMedicine(request):
-    medicine = Medicine.objects.get(
-        medicineName=(request.data.get('medicineName')))
+    try:
+        medicine = Medicine.objects.get( medicineName=(request.data.get('medicineName')))
+    except Medicine.DoesNotExist:
+        return Response({'message': 'ERROR'})
     medicine.delete()
     return Response({'message': 'deleted successfuly'})
