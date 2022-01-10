@@ -1,4 +1,4 @@
-from .models import Medicine
+from .models import Medicine,MedicineForUser
 from .serializers import MedicineSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -40,3 +40,51 @@ def deleteMedicine(request):
         return Response({'message': 'ERROR'})
     medicine.delete()
     return Response({'message': 'deleted successfuly'})
+
+@api_view(['POST'])
+def getListMedicines(request):
+    mail=request.data.get('mail')
+    return Response(listMedicines(mail))
+
+
+
+
+
+#------------------------------- help fucntions ----------------------------------#
+
+
+def medicineForUser(mail,levelNumber):
+    MedicineForUser.objects.filter(mail=mail).delete()
+    medicineBylevel=list(filter(lambda m:levelNumber in m.levels,Medicine.objects.all()))
+    for medicine in medicineBylevel:
+        mfu=MedicineForUser(mail=mail,
+                            medicineName=medicine.medicineName,
+                            description=medicine.description,
+                            count=medicine.count,
+                            badInfluence=medicine.badInfluence,
+                            foodOrNot=medicine.foodOrNot)
+        mfu.days=[{'day':1, 'isActive':False},{'day':3, 'isActive':False},{'day':6, 'isActive':True}]
+        mfu.save()
+
+
+def listMedicines(mail):
+    allmedicines=MedicineForUser.objects.filter(mail=mail)
+    listMed=list([] for _ in range(1,8))
+    for medicine in allmedicines:
+        for day in medicine.days:
+            tempMed={
+                'day':day['day'],
+                'medicineName':medicine.medicineName,
+                'count':medicine.count,
+                'isActive':day['isActive']
+            }
+            listMed[day['day']-1].append(tempMed)
+    return listMed
+
+
+
+
+       
+        
+
+

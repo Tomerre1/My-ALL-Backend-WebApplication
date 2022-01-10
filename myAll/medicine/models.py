@@ -5,12 +5,28 @@ from django.db.models import JSONField
 class Medicine(models.Model):
     medicineName=models.CharField(max_length=100,primary_key=True)
     description=models.CharField(max_length=1500)
-    level=JSONField(default=list, blank=True, null=True)
+    levels=JSONField(default=list, blank=True, null=True)
     count=models.CharField(max_length=100,null=True,default=None)
     badInfluence=models.CharField(max_length=1000,null=True,default=None)
     foodOrNot=models.CharField(max_length=100,null=True,default=None)
 
 
     def __str__(self):
-        return 'medicine Name:{0} ,description: {1}, level: {2}'.format(self.medicineName, self.description, self.level) 
+        return 'medicine Name:{0} ,description: {1}, level: {2}'.format(self.medicineName, self.description, self.levels) 
+
+
+class MedicineForUser(models.Model):
+    mail=models.EmailField(max_length=254)
+    medicineName=models.CharField(max_length=100)
+    description=models.CharField(max_length=1500)
+    count=models.CharField(max_length=100,null=True,default=None)
+    badInfluence=models.CharField(max_length=1000,null=True,default=None)
+    foodOrNot=models.CharField(max_length=100,null=True,default=None)
+    days=JSONField(default=list, blank=True, null=True)
+    class Meta:
+        unique_together = (('mail','medicineName'),)
+
+
+    def __str__(self):
+        return 'mail:{1},medicine Name:{0} '.format(self.medicineName, self.mail) 
 

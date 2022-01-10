@@ -1,5 +1,4 @@
-from re import T
-from django.shortcuts import render
+from medicine.views import medicineForUser
 from level.serializers import LevelSerializer
 from step.serializers import StepForUserSerializer,StepSerializer
 from level.models import Level
@@ -64,12 +63,8 @@ def next(request):
     isNextLevel=request.data.get('isNextLevel')
     if isNextLevel:
         nextLevel=int(request.data.get('nextLevel'))
-        try:
-            oldLevel=Level.objects.get(levelNumber=(nextLevel-1))
-        except Level.DoesNotExist:
-            return Response('')
-        # oldLevel.isDone=True
-        # oldLevel.save()
+        # או ככה או פלוס 1 או מינוס 1
+        medicineForUser(mail,nextLevel)# או ככה או פלוס 1 או מינוס 1
     newStep=(StepForUser.objects.filter(mail=mail)
                                 .filter(levelNumber=levelNumber)
                                 .filter(stepNumber=stepNumber)).first()
@@ -91,18 +86,14 @@ def back(request):
     stepNumber=request.data.get('stepNumber')
     isBackLevel=request.data.get('isBackLevel')
     if isBackLevel:
-        try:
-            backLevel=int(request.data.get('backLevel'))
-        except Level.DoesNotExist:
-            return Response('')
-        # oldLevel=Level.objects.get(levelNumber=backLevel)
-        # oldLevel.isDone=False
-        # oldLevel.save()
+        backLevel=int(request.data.get('backLevel'))
+        medicineForUser(mail,backLevel)# או ככה או פלוס 1 או מינוס 1
+        
     oldStep=(StepForUser.objects.filter(mail=mail)
                                 .filter(isCurrStep=True)).first()
     oldStep.isCurrStep=False
     oldStep.save()
-    
+
     newStep=(StepForUser.objects.filter(mail=mail)
                                 .filter(levelNumber=levelNumber)
                                 .filter(stepNumber=stepNumber)).first()

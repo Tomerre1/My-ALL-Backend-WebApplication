@@ -6,5 +6,5 @@ urlpatterns = [
     path('updatemedicine/', views.updateMedicine),
     path('deleteMedicine/', views.deleteMedicine),
     path('allmedicines/', views.allMedicines),
-
+    path('getListMedicines/', views.getListMedicines),
 ]

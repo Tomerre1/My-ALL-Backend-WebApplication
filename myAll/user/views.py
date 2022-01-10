@@ -1,5 +1,6 @@
 
 from .models import User
+from medicine.views import medicineForUser
 from step.models import Step, StepForUser
 from .serializers import UserSerializer
 from rest_framework.decorators import api_view
@@ -26,6 +27,7 @@ def signUp(request):
     if serializer.is_valid():
         serializer.save()
         stepForUser(serializer.data)
+        medicineForUser(serializer.data['mail'],1)
         return Response(serializer.data,status=status.HTTP_201_CREATED)
     return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
