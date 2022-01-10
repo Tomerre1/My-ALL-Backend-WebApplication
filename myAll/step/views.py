@@ -65,7 +65,7 @@ def next(request):
     if isNextLevel:
         nextLevel=int(request.data.get('nextLevel'))
         try:
-            oldLevel=Level.objects.get(levelNumber=nextLevel-1)
+            oldLevel=Level.objects.get(levelNumber=(nextLevel-1))
         except Level.DoesNotExist:
             return Response('')
         # oldLevel.isDone=True
@@ -98,7 +98,11 @@ def back(request):
         # oldLevel=Level.objects.get(levelNumber=backLevel)
         # oldLevel.isDone=False
         # oldLevel.save()
-
+    oldStep=(StepForUser.objects.filter(mail=mail)
+                                .filter(isCurrStep=True)).first()
+    oldStep.isCurrStep=False
+    oldStep.save()
+    
     newStep=(StepForUser.objects.filter(mail=mail)
                                 .filter(levelNumber=levelNumber)
                                 .filter(stepNumber=stepNumber)).first()
@@ -106,10 +110,7 @@ def back(request):
     newStep.isDone=False
     newStep.save()
 
-    oldStep=(StepForUser.objects.filter(mail=mail)
-                                .filter(isCurrStep=True)).first()
-    oldStep.isCurrStep=False
-    oldStep.save()
+    
     timeLine=path(mail)
     return Response(timeLine)
 
