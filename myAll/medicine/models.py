@@ -7,7 +7,7 @@ class Medicine(models.Model):
     description=models.CharField(max_length=1500)
     levels=JSONField(default=list, blank=True, null=True)
     count=models.CharField(max_length=100,null=True,default=None)
-    badInfluence=models.CharField(max_length=1000,null=True,default=None)
+    badInfluence=JSONField(default=list, blank=True, null=True)
     foodOrNot=models.CharField(max_length=100,null=True,default=None)
 
 
@@ -20,7 +20,7 @@ class MedicineForUser(models.Model):
     medicineName=models.CharField(max_length=100)
     description=models.CharField(max_length=1500)
     count=models.CharField(max_length=100,null=True,default=None)
-    badInfluence=models.CharField(max_length=1000,null=True,default=None)
+    badInfluence=JSONField(default=list, blank=True, null=True)
     foodOrNot=models.CharField(max_length=100,null=True,default=None)
     days=JSONField(default=list, blank=True, null=True)
     class Meta:
