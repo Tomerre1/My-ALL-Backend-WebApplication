@@ -9,7 +9,7 @@ class Medicine(models.Model):
     count=models.CharField(max_length=100,null=True,default=None)
     badInfluence=JSONField(default=list, blank=True, null=True)
     foodOrNot=models.CharField(max_length=100,null=True,default=None)
-
+    days=JSONField(default=list, blank=True, null=True)
 
     def __str__(self):
         return 'medicine Name:{0} ,description: {1}, level: {2}'.format(self.medicineName, self.description, self.levels) 
@@ -18,11 +18,8 @@ class Medicine(models.Model):
 class MedicineForUser(models.Model):
     mail=models.EmailField(max_length=254)
     medicineName=models.CharField(max_length=100)
-    description=models.CharField(max_length=1500)
     count=models.CharField(max_length=100,null=True,default=None)
-    badInfluence=JSONField(default=list, blank=True, null=True)
-    foodOrNot=models.CharField(max_length=100,null=True,default=None)
-    days=JSONField(default=list, blank=True, null=True)
+    days=JSONField(default=dict, blank=True, null=True)
     class Meta:
         unique_together = (('mail','medicineName'),)
 

@@ -1,5 +1,5 @@
 from .models import Medicine,MedicineForUser
-from .serializers import MedicineSerializer
+from .serializers import MedicineSerializer,MedicineForUserSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -47,7 +47,65 @@ def getListMedicines(request):
     return Response(listMedicines(mail))
 
 
+@api_view(['POST'])
+def removeMedicineFromDay(request):
+    mail=request.data.get('mail')
+    medicineName=request.data.get("medicineName")
+    day=str(indexDay(request.data.get('day')))
+    mfu= MedicineForUser.objects.get(mail=mail,medicineName=medicineName)
+    mfu.days.pop(day)
+    mfu.save()
+    if not mfu.days:
+        mfu.delete()
+    return Response("")
 
+
+
+@api_view(['POST'])
+def addMedicineForDay(request):
+    mail=request.data.get('mail')
+    medicineName=request.data.get("medicineName")
+    count=request.data.get('count')
+    day=str(indexDay(request.data.get('day')))
+    try:
+        mfu= MedicineForUser.objects.get(mail=mail,medicineName=medicineName)
+        mfu.days[day]=False
+        mfu.save()
+    except MedicineForUser.DoesNotExist:
+        mfu=MedicineForUser(mail=mail,medicineName=medicineName,count=count)            
+        mfu.days[day]=False
+        mfu.save()
+    return Response(MedicineForUserSerializer(mfu).data)
+
+
+@api_view(['POST'])
+def changeActive(request):
+    mail=request.data.get('mail')
+    medicineName=request.data.get("medicineName")
+    day=str(indexDay(request.data.get('day')))
+    mfu= MedicineForUser.objects.get(mail=mail,medicineName=medicineName)
+    mfu.days[day]=not(mfu.days[day])
+    mfu.save()
+    return Response(MedicineForUserSerializer(mfu).data)    
+
+@api_view(['POST']) 
+def restartMedicineList(request):
+    mail=request.data.get('mail')
+    medicinesForUser=MedicineForUser.objects.filter(mail=mail)
+    for mfu in medicinesForUser:
+        mfu.days={day:False for day in mfu.days}
+        mfu.save()
+    return Response("")
+
+@api_view(['POST']) 
+def getListMedicineNames(request):
+    mail=request.data.get('mail')
+    day=str(indexDay(request.data.get('day')))
+    allNames =set(m.medicineName for m in Medicine.objects.all())
+    medicineForUser=MedicineForUser.objects.filter(mail=mail)
+    medicineForUserbyDay =list(filter(lambda mfu:day in mfu.days,medicineForUser))
+    dayNames = set(m.medicineName for m in medicineForUserbyDay)
+    return Response(allNames-dayNames)
 
 
 #------------------------------- help fucntions ----------------------------------#
@@ -55,33 +113,37 @@ def getListMedicines(request):
 
 def medicineForUser(mail,levelNumber):
     MedicineForUser.objects.filter(mail=mail).delete()
-    medicineBylevel=list(filter(lambda m:levelNumber in m.levels,Medicine.objects.all()))
+
+    medicineBylevel=list(filter((lambda m:levelNumber in m.levels),Medicine.objects.all()))
     for medicine in medicineBylevel:
         mfu=MedicineForUser(mail=mail,
                             medicineName=medicine.medicineName,
-                            description=medicine.description,
-                            count=medicine.count,
-                            badInfluence=medicine.badInfluence,
-                            foodOrNot=medicine.foodOrNot)
-        mfu.days=[{'day':1, 'isActive':False},{'day':3, 'isActive':False},{'day':6, 'isActive':True}]
+                            count=medicine.count)
+        mfu.days={day:False for day in stringDaysToIntDays(medicine.days)}
         mfu.save()
 
 
 def listMedicines(mail):
     allmedicines=MedicineForUser.objects.filter(mail=mail)
-    listMed=list([] for _ in range(1,8))
+    listMed=list([] for _ in range(7))
     for medicine in allmedicines:
         for day in medicine.days:
             tempMed={
-                'day':day['day'],
+                'day':day,
                 'medicineName':medicine.medicineName,
                 'count':medicine.count,
-                'isActive':day['isActive']
+                'isActive':medicine.days[day]
             }
-            listMed[day['day']-1].append(tempMed)
+            listMed[int(day)-1].append(tempMed)
     return listMed
 
 
+def stringDaysToIntDays(stingDays):
+    return [indexDay(day) for day in stingDays]
+
+def indexDay(stingDays):
+    days=["ראשון","שני","שלישי","רבעי","חמישי","שישי","שבת"]
+    return (days.index(stingDays)+1)
 
 
        

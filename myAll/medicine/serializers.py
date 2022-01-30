@@ -6,10 +6,10 @@ from .models import Medicine,MedicineForUser
 class MedicineSerializer(serializers.ModelSerializer):
     class Meta:
         model=Medicine
-        fields=['medicineName','description','levels','count','badInfluence','foodOrNot']
+        fields=['medicineName','description','levels','count','badInfluence','foodOrNot',"days"]
 
 class MedicineForUserSerializer(serializers.ModelSerializer):
     class Meta:
         model=MedicineForUser
-        fields=['mail','medicineName','description','count','badInfluence','foodOrNot','days']
+        fields=['mail','medicineName','count','days']
     

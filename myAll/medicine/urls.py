@@ -7,4 +7,9 @@ urlpatterns = [
     path('deleteMedicine/', views.deleteMedicine),
     path('allmedicines/', views.allMedicines),
     path('getListMedicines/', views.getListMedicines),
+    path('addMedicineForDay/', views.addMedicineForDay),
+    path('removeMedicineFromDay/', views.removeMedicineFromDay),
+    path('changeActive/', views.changeActive),
+    path('restartMedicineList/', views.restartMedicineList),
+    path('getListMedicineNames/', views.getListMedicineNames),
 ]
