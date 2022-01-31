@@ -144,7 +144,7 @@ def stringDaysToIntDays(stingDays):
     return [indexDay(day) for day in stingDays]
 
 def indexDay(stingDays):
-    days=["ראשון","שני","שלישי","רבעי","חמישי","שישי","שבת"]
+    days=["ראשון","שני","שלישי","רביעי","חמישי","שישי","שבת"]
     return (days.index(stingDays)+1)
 
 
