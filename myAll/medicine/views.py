@@ -61,6 +61,7 @@ def removeMedicineFromDay(request):
 
 
 
+
 @api_view(['POST'])
 def addMedicineForDay(request):
     mail=request.data.get('mail')
@@ -136,7 +137,7 @@ def listMedicines(mail):
                 'isActive':medicine.days[day]
             }
             listMed[int(day)-1].append(tempMed)
-    return listMed
+    return listMed[-1:]+listMed[:-1]
 
 
 def stringDaysToIntDays(stingDays):

@@ -1,11 +1,8 @@
-days=["ראשון","שני","שלישי","שישי","שבת"]
+days=["ראשון","שני","שלישי","רבעי","חמישי","שישי","שבת"]
+tomerdays = ['שבת', 'ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי']
 
-def stringDaysToIntDays(stingDays):
-    days=["ראשון","שני","שלישי","רבעי","חמישי","שישי","שבת"]
-    return [(days.index(day)+1) for day in stingDays]
+print(tomerdays)
+print(days[-1:]+days[:-1])
 
 
-temp={day:False for day in stringDaysToIntDays(days)}
-print (temp)
-temp.pop(1)
-print (temp)
+
