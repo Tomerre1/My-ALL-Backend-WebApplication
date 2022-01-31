@@ -69,6 +69,7 @@ def addMedicineForDay(request):
     day=str(indexDay(request.data.get('day')))
     try:
         mfu= MedicineForUser.objects.get(mail=mail,medicineName=medicineName)
+        mfu.count=count
         mfu.days[day]=False
         mfu.save()
     except MedicineForUser.DoesNotExist:
