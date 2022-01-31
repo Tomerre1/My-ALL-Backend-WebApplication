@@ -137,7 +137,7 @@ def listMedicines(mail):
                 'isActive':medicine.days[day]
             }
             listMed[int(day)-1].append(tempMed)
-    return listMed[-1:]+listMed[:-1]
+    return (listMed[-1:]+listMed[:-1])[::-1]
 
 
 def stringDaysToIntDays(stingDays):
