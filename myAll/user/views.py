@@ -64,14 +64,17 @@ def deleteUser(request):
 #-------------------help functions ------------------#
 
 def stepForUser(user):
-    for step in Step.objects.all():
+    allSteps=Step.objects.all()
+    stepInFirstLevel=Step.objects.filter(levelNumber=1)
+    firstStep=min(stepInFirstLevel,key=lambda x:x.stepNumber)
+    for step in allSteps:
         sfu=StepForUser(mail=user['mail'],
                         levelNumber=step.levelNumber,
                         stepNumber=step.stepNumber,
                         description=step.description,
                         date=step.date,
                         requirements=step.requirements)
-        if sfu.levelNumber == 1 and sfu.stepNumber ==1 :
+        if sfu.levelNumber == 1 and sfu.stepNumber ==firstStep.stepNumber :
             sfu.isCurrStep=True
         sfu.save()
     
