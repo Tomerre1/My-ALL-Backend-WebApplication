@@ -1,4 +1,5 @@
 from medicine.views import medicineForUser
+import datetime
 from level.serializers import LevelSerializer
 from step.serializers import StepForUserSerializer,StepSerializer
 from level.models import Level
@@ -48,6 +49,21 @@ def deleteStep(request):
 
 #------------------------------- for user ----------------------------------#
 
+@api_view(['POST'])
+def delaySteps(request):
+    mail=request.data.get('mail')
+    newDate=buildDate(request.data.get('date'))
+    day=getDelay(newDate)
+    allStepOfuser=sortSteps(StepForUser.objects.filter(mail=mail))
+    currentStep=list(filter(lambda x:x.isCurrStep==True,allStepOfuser))[0]
+    index=allStepOfuser.index(currentStep)
+    for sfu in allStepOfuser[index+1:]:
+        print(allStepOfuser[index+1:])
+        sfu.date+=datetime.timedelta(days=day)
+        sfu.save()
+   
+    timeLine=path(mail)
+    return Response(timeLine)
 
 @api_view(['POST'])
 def getPath(request):
@@ -63,8 +79,8 @@ def next(request):
     isNextLevel=request.data.get('isNextLevel')
     if isNextLevel:
         nextLevel=int(request.data.get('nextLevel'))
-        # או ככה או פלוס 1 או מינוס 1
-        medicineForUser(mail,nextLevel)# או ככה או פלוס 1 או מינוס 1
+
+        medicineForUser(mail,nextLevel)
     newStep=(StepForUser.objects.filter(mail=mail)
                                 .filter(levelNumber=levelNumber)
                                 .filter(stepNumber=stepNumber)).first()
@@ -127,4 +143,45 @@ def path(mail):
         timeLine.append(tempLevel)
         
     return timeLine   
+def stepForUser(user):
+    allSteps=sortSteps(Step.objects.all())
+    stepInFirstLevel=list(filter(lambda x:x.levelNumber==1, allSteps))
+    firstStep=min(stepInFirstLevel,key=lambda x:x.stepNumber)
+    currlevel=1
+    lastDate=datetime.datetime.now()
+    lastStepNumber=0
+    for step in allSteps:
+        sfu=StepForUser(mail=user['mail'],
+                        levelNumber=step.levelNumber,
+                        stepNumber=step.stepNumber,
+                        description=step.description,
+                        requirements=step.requirements)
 
+        if sfu.levelNumber == 1 and sfu.stepNumber ==firstStep.stepNumber :
+            sfu.isCurrStep=True
+
+        if sfu.levelNumber==currlevel:
+            sfu.date=lastDate+datetime.timedelta(days=sfu.stepNumber-lastStepNumber)
+            lastDate=sfu.date
+            lastStepNumber=sfu.stepNumber
+        else:
+            sfu.date=lastDate+datetime.timedelta(days=sfu.stepNumber)
+            lastDate=sfu.date
+            lastStepNumber=sfu.stepNumber
+            currlevel=sfu.levelNumber
+        sfu.save()
+
+def sortSteps(allSteps):
+    countLevels=max(allSteps,key=lambda x:x.levelNumber).levelNumber
+    sorted=[]
+    for level in range(1,countLevels+1):
+       temp=(list(filter(lambda x:x.levelNumber==level,allSteps)))
+       temp.sort(key=lambda x:x.stepNumber)
+       
+       sorted+=temp
+    return sorted
+def getDelay(newDate):
+    delta=(newDate-datetime.datetime.now())
+    return delta.days
+def buildDate(newDate):
+    return datetime.datetime(newDate["year"],newDate["month"],newDate["day"])

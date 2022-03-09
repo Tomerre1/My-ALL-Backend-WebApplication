@@ -1,8 +1,12 @@
-days=["ראשון","שני","שלישי","רבעי","חמישי","שישי","שבת"]
-tomerdays = ['שבת', 'ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי']
+import datetime
 
-print(tomerdays)
+from numpy import e
 
-for i in (days[-1:]+days[:-1])[::-1]:
-    print(i)
+x = datetime.datetime.now()
+date_1 = datetime.datetime(2024, 4, 17)
+print(date_1)
+end_date = date_1 - x
 
+print(end_date)
+r=[1,2,3,4]
+print(list(range(1,7)))

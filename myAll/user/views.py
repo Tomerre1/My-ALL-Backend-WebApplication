@@ -1,7 +1,7 @@
 
 from .models import User
 from medicine.views import medicineForUser
-from step.models import Step, StepForUser
+from step.views import stepForUser
 from .serializers import UserSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -63,20 +63,9 @@ def deleteUser(request):
 
 #-------------------help functions ------------------#
 
-def stepForUser(user):
-    allSteps=Step.objects.all()
-    stepInFirstLevel=Step.objects.filter(levelNumber=1)
-    firstStep=min(stepInFirstLevel,key=lambda x:x.stepNumber)
-    for step in allSteps:
-        sfu=StepForUser(mail=user['mail'],
-                        levelNumber=step.levelNumber,
-                        stepNumber=step.stepNumber,
-                        description=step.description,
-                        date=step.date,
-                        requirements=step.requirements)
-        if sfu.levelNumber == 1 and sfu.stepNumber ==firstStep.stepNumber :
-            sfu.isCurrStep=True
-        sfu.save()
-    
+
+  
+
+
         
     

@@ -9,5 +9,6 @@ urlpatterns = [
     path('timeline/', views.getPath),
     path('next/', views.next),
     path('back/', views.back),
+    path('delaysteps/', views.delaySteps),
 ]
 
