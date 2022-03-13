@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'level',
     'step',
     'video',
+    'contact',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

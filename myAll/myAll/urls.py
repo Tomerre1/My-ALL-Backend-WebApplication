@@ -8,4 +8,5 @@ urlpatterns = [
     path('step/',include('step.urls')),
     path('level/',include('level.urls')),
     path('video/',include('video.urls')),
+    path('contact/',include('contact.urls')),
 ]
