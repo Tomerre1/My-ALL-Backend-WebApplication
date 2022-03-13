@@ -7,4 +7,5 @@ urlpatterns = [
     path('medicine/',include('medicine.urls')),
     path('step/',include('step.urls')),
     path('level/',include('level.urls')),
+    path('video/',include('video.urls')),
 ]
