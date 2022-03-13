@@ -1,1 +1,1 @@
-web: gunicorn myAll:application
+web: gunicorn myAll.myAll:application
