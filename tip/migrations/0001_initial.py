@@ -12,15 +12,14 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Contact',
+            name='Tip',
             fields=[
                 ('id', models.IntegerField(primary_key=True, serialize=False)),
-                ('mailUser', models.EmailField(max_length=100)),
-                ('name', models.CharField(max_length=100)),
-                ('phone', models.CharField(max_length=15)),
                 ('mail', models.EmailField(max_length=100)),
-                ('job', models.CharField(max_length=100)),
-                ('imgUrl', models.URLField(max_length=1500)),
+                ('title', models.CharField(max_length=100)),
+                ('content', models.CharField(max_length=100)),
+                ('date', models.CharField(max_length=100)),
+                ('label', models.CharField(max_length=100)),
             ],
         ),
     ]

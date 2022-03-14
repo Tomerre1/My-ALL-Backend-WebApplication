@@ -9,4 +9,5 @@ urlpatterns = [
     path('level/',include('level.urls')),
     path('video/',include('video.urls')),
     path('contact/',include('contact.urls')),
+    path('tip/',include('tip.urls')),
 ]
