@@ -10,4 +10,5 @@ urlpatterns = [
     path('video/',include('video.urls')),
     path('contact/',include('contact.urls')),
     path('tip/',include('tip.urls')),
+    path('successStories/',include('successStories.urls')),
 ]
