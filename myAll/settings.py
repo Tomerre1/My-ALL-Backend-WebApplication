@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+# heroku https://myall-backend.herokuapp.com/
 from pathlib import Path
 import os
 import django_heroku
