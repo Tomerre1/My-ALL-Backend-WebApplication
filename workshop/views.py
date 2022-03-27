@@ -1,21 +1,21 @@
 
-from .models import Visit
-from .serializers import VisitSerializer
+from .models import Workshop
+from .serializers import WorkshopSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
 
 @api_view(['GET'])
-def allVisits(request):
-    visits = Visit.objects.filter(mail=request.data.get('mail'))
-    serializer = VisitSerializer(visits, many=True)
+def allWorkshops(request):
+    workshops = Workshop.objects.filter(mail=request.data.get('mail'))
+    serializer = WorkshopSerializer(workshops, many=True)
     return Response(serializer.data)
 
 
 @api_view(['POST'])
-def addVisit(request):
-    serializer = VisitSerializer(data=request.data)
+def addWorkshop(request):
+    serializer = WorkshopSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data)
@@ -23,9 +23,9 @@ def addVisit(request):
 
 
 @api_view(['PUT'])
-def updateVisit(request):
-    visit = Visit.objects.get(id=(request.data.get('id')))
-    serializer = VisitSerializer(visit, data=request.data)
+def updateWorkshop(request):
+    workshop = Workshop.objects.get(id=(request.data.get('id')))
+    serializer = WorkshopSerializer(workshop, data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data)
@@ -33,18 +33,18 @@ def updateVisit(request):
 
 
 @api_view(['DELETE'])
-def deleteVisit(request):
+def deleteWorkshop(request):
     try:
-        visit = Visit.objects.get(id=(request.data.get('id')))
-    except Visit.DoesNotExist:
+        workshop = Workshop.objects.get(id=(request.data.get('id')))
+    except Workshop.DoesNotExist:
         return Response({'message': 'ERROR'})
-    visit.delete()
+    workshop.delete()
     return Response({'message': 'deleted successfuly'})
 
 @api_view(['POST'])
 def changeActive(request):
     id=request.data.get('id')
-    visit= Visit.objects.get(id=id)
-    visit.isDone=not(visit.isDone)
-    visit.save()
-    return Response(VisitSerializer(visit).data)
+    workshop= Workshop.objects.get(id=id)
+    workshop.isDone=not(workshop.isDone)
+    workshop.save()
+    return Response(WorkshopSerializer(workshop).data)

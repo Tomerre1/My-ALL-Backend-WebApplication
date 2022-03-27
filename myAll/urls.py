@@ -12,4 +12,5 @@ urlpatterns = [
     path('tip/',include('tip.urls')),
     path('successStories/',include('successStories.urls')),
     path('visit/',include('visit.urls')),
+    path('workshop/',include('workshop.urls')),
 ]
