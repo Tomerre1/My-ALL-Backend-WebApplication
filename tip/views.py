@@ -11,9 +11,10 @@ from rest_framework import status
 @api_view(['GET'])
 def allTips(request):
     tips = Tip.objects.all()
+    users=User.objects.all()
     listTip=[]
     for tip in tips:
-        user=User.objects.get(mail=tip.mail)
+        user=next(filter((lambda user:user.mail==tip.mail),users))
         userSerializer=UserSerializer(user).data
         del userSerializer["password"]
         tempTip=TipSerializer(tip).data

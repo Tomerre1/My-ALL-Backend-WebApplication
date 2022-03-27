@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'contact',
     'tip',
     'successStories',
+    'visit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

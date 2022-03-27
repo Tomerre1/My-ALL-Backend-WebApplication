@@ -1,21 +1,21 @@
 
-from .models import Contact
-from .serializers import ContactSerializer
+from .models import Visit
+from .serializers import VisitSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
 
 @api_view(['GET'])
-def allContacts(request):
-    contacts = Contact.objects.filter(mailUser=request.data.get('mailUser'))
-    serializer = ContactSerializer(contacts, many=True)
+def allVisits(request):
+    visits = Visit.objects.filter(mail=request.data.get('mail'))
+    serializer = VisitSerializer(visits, many=True)
     return Response(serializer.data)
 
 
 @api_view(['POST'])
-def addContact(request):
-    serializer = ContactSerializer(data=request.data)
+def addVisit(request):
+    serializer = VisitSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data)
@@ -23,9 +23,9 @@ def addContact(request):
 
 
 @api_view(['PUT'])
-def updateContact(request):
-    contact = Contact.objects.get(id=(request.data.get('id')))
-    serializer = ContactSerializer(contact, data=request.data)
+def updateVisit(request):
+    visit = Visit.objects.get(id=(request.data.get('id')))
+    serializer = VisitSerializer(visit, data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data)
@@ -33,10 +33,10 @@ def updateContact(request):
 
 
 @api_view(['DELETE'])
-def deleteContact(request):
+def deleteVisit(request):
     try:
-        contact = Contact.objects.get(id=(request.data.get('id')))
-    except Contact.DoesNotExist:
+        visit = Visit.objects.get(id=(request.data.get('id')))
+    except Visit.DoesNotExist:
         return Response({'message': 'ERROR'})
-    contact.delete()
+    visit.delete()
     return Response({'message': 'deleted successfuly'})

@@ -11,4 +11,5 @@ urlpatterns = [
     path('contact/',include('contact.urls')),
     path('tip/',include('tip.urls')),
     path('successStories/',include('successStories.urls')),
+    path('visit/',include('visit.urls')),
 ]

@@ -14,9 +14,10 @@ from rest_framework import status
 @api_view(['GET'])
 def allSuccessStories(request):
     successStories = SuccessStories.objects.all()
+    users=User.objects.all()
     listStories=[]
     for successStory in successStories:
-        user=User.objects.get(mail=successStory.mail)
+        user=next(filter((lambda user:user.mail==successStory.mail),users))
         userSerializer=UserSerializer(user).data
         del userSerializer["password"]
         tempSuccessStory=SuccessStoriesSerializer(successStory).data
