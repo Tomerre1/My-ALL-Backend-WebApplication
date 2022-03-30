@@ -13,6 +13,7 @@ def allVisits(request):
     return Response(serializer.data)
 
 
+
 @api_view(['POST'])
 def addVisit(request):
     serializer = VisitSerializer(data=request.data)

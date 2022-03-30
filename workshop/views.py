@@ -13,6 +13,7 @@ def allWorkshops(request):
     return Response(serializer.data)
 
 
+
 @api_view(['POST'])
 def addWorkshop(request):
     serializer = WorkshopSerializer(data=request.data)

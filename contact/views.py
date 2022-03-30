@@ -13,6 +13,7 @@ def allContacts(request):
     return Response(serializer.data)
 
 
+
 @api_view(['POST'])
 def addContact(request):
     serializer = ContactSerializer(data=request.data)
