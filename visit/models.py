@@ -3,10 +3,10 @@ from django.db import models
 
 class Visit(models.Model):
     
-    id =models.IntegerField(primary_key=True)
+    id =models.CharField(max_length=100,primary_key=True)
     mail = models.EmailField(max_length=100)
     content =models.CharField(max_length=1500)
-    title =models.CharField(max_length=15)
+    title =models.CharField(max_length=150)
     date = models.CharField(max_length=100)
     isDone = models.BooleanField(default=False)
 
