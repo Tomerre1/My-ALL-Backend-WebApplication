@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 
-@api_view(['GET'])
+@api_view(['POST'])
 def allContacts(request):
     contacts = Contact.objects.filter(mailUser=request.data.get('mailUser'))
     serializer = ContactSerializer(contacts, many=True)

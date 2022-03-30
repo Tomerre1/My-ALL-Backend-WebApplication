@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 
-@api_view(['GET'])
+@api_view(['POST'])
 def allVisits(request):
     visits = Visit.objects.filter(mail=request.data.get('mail'))
     serializer = VisitSerializer(visits, many=True)
