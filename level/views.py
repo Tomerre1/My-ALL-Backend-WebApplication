@@ -4,6 +4,9 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
+from step.models import Step
+from step.serializers import StepSerializer
+
 
 @api_view(['POST'])
 def InsertLevel(request):
@@ -41,3 +44,23 @@ def deleteLevel(request):
         return Response({'message': 'ERROR'})
     level.delete()
     return Response({'message': 'deleted successfuly'})
+
+
+@api_view(['GET'])
+def protocol(request):    
+    result=allLevelsAndSteps()
+    return Response(result)
+
+def allLevelsAndSteps():
+    allStep=Step.objects.filter()
+    allLevel=Level.objects.all()
+    result=[]
+    for level in allLevel:
+        levelsir=LevelSerializer(level).data
+        tempLevel=[levelsir,]
+        stepOfLevel=allStep.filter(levelNumber=level.levelNumber)
+        stepsOfLevelSir=StepSerializer(stepOfLevel,many=True)
+        tempLevel+=stepsOfLevelSir.data
+        result.append(tempLevel)
+        
+    return result

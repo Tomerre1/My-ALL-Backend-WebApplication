@@ -37,6 +37,12 @@ class userTestCreate(TestCase):
         response.status_code
         self.assertEqual(response.status_code, 200)
 
+    def test_deleteUser(self):
+        c = Client()
+        response = c.delete('/deleteuser/', mail="testMail@gmail.com")
+        response.status_code
+        self.assertEqual(response.status_code, 200)
+
    
     
     

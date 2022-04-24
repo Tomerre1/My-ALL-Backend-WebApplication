@@ -45,5 +45,11 @@ class levelTestCreate(TestCase):
         response = c.delete('/level/deleteLevel/', levelNumber=1)
         response.status_code
         self.assertEqual(response.status_code, 200)
+
+    def test_protocol(self):
+        c = Client()
+        response = c.get('/level/protocol/')
+        response.status_code
+        self.assertEqual(response.status_code, 200)
         
     

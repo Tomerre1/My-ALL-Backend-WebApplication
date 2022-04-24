@@ -6,6 +6,7 @@ urlpatterns = [
     path('updateLevel/', views.updateLevel),
     path('getAllLevels/', views.getAllLevels),
     path('deleteLevel/', views.deleteLevel),
+    path('protocol/', views.protocol),
     
 ]
 
