@@ -1,4 +1,10 @@
 
+from contact.models import Contact
+from medicine.models import MedicineForUser
+from step.models import StepForUser
+from tip.models import Tip
+from visit.models import Visit
+from workshop.models import Workshop
 from .models import User
 from medicine.views import medicineForUser
 from step.views import stepForUser
@@ -57,6 +63,12 @@ def deleteUser(request):
         user = User.objects.get(mail=request.data.get('mail'))
     except User.DoesNotExist:
         return Response({'message': 'ERROR'})
+    StepForUser.objects.filter(mail=user.mail).delete()
+    MedicineForUser.objects.filter(mail=user.mail).delete()
+    Contact.objects.filter(mailUser=user.mail).delete()
+    Tip.objects.filter(mail=user.mail).delete()
+    Visit.objects.filter(mail=user.mail).delete()
+    Workshop.objects.filter(mail=user.mail).delete()
     user.delete()
     return Response({'message': 'deleted successfuly'})
 

@@ -42,6 +42,7 @@ def deleteLevel(request):
         level = Level.objects.get(levelNumber=request.data.get('levelNumber'))
     except Level.DoesNotExist:
         return Response({'message': 'ERROR'})
+    Step.objects.filter(levelNumber=level.levelNumber).delete()
     level.delete()
     return Response({'message': 'deleted successfuly'})
 
