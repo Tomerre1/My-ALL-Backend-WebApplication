@@ -70,6 +70,14 @@ def getPath(request):
     timeLine=path(mail)
     return Response(timeLine)
 
+@api_view(['GET'])
+def getNameSteps(request):
+    names=[]
+    for step in Step.objects.all():
+        names.append("שלב {0} תחנה {1}".format(step.levelNumber,step.stepNumber))
+    return Response(names)
+
+
 @api_view(['POST'])
 def next(request):
     mail=request.data.get('mail')
