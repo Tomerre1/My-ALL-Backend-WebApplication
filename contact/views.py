@@ -10,6 +10,7 @@ from rest_framework import status
 def allContacts(request):
     contacts = Contact.objects.filter(mailUser=request.data.get('mailUser'))
     serializer = ContactSerializer(contacts, many=True)
+    print(111111111,"\n",contacts[0].img)
     return Response(serializer.data)
 
 

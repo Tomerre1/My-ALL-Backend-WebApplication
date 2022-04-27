@@ -58,7 +58,6 @@ def delaySteps(request):
     currentStep=list(filter(lambda x:x.isCurrStep==True,allStepOfuser))[0]
     index=allStepOfuser.index(currentStep)
     for sfu in allStepOfuser[index+1:]:
-        print(allStepOfuser[index+1:])
         sfu.date+=datetime.timedelta(days=day)
         sfu.save()
    

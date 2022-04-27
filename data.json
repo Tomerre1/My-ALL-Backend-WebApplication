@@ -1,0 +1,683 @@
+{
+    "levels":
+    [
+        {
+            "levelNumber": 1,
+            "description": "שלב ראשון-פיילוט"
+        },
+        {
+            "levelNumber": 2,
+            "description": "שלב שני-פיילוט"
+        },
+        {
+            "levelNumber": 3,
+            "description": "שלב שלישי-פיילוט"
+        },
+        {
+            "levelNumber": 4,
+            "description": "שלב רבעי-פיילוט"
+        }
+
+    ],
+    "steps":
+    [
+        {
+            "levelNumber": 1,
+            "stepNumber": 4,
+            "description": "תחנה מס' 4 - פיילוט",
+            "requirements": "מידע אודות התחנה הנוכחית -פיילוט"
+        },
+        {
+            "levelNumber": 1,
+            "stepNumber": 11,
+            "description": "תחנה מס' 11 - פיילוט",
+            "requirements": "מידע אודות התחנה הנוכחית -פיילוט"
+        },
+        {
+            "levelNumber": 1,
+            "stepNumber": 21,
+            "description": "תחנה מס' 21 - פיילוט",
+            "requirements": "מידע אודות התחנה הנוכחית -פיילוט"
+        },
+        {
+            "levelNumber": 1,
+            "stepNumber": 28,
+            "description": "תחנה מס' 28 - פיילוט",
+            "requirements": "מידע אודות התחנה הנוכחית -פיילוט"
+        },
+        {
+            "levelNumber": 2,
+            "stepNumber": 3,
+            "description": "תחנה מס' 3 - פיילוט",
+            "requirements": "מידע אודות התחנה הנוכחית -פיילוט"
+        },
+        {
+            "levelNumber": 2,
+            "stepNumber": 10,
+            "description": "תחנה מס' 10 - פיילוט",
+            "requirements": "מידע אודות התחנה הנוכחית -פיילוט"
+        },
+        {
+            "levelNumber": 2,
+            "stepNumber": 17,
+            "description": "תחנה מס' 17 - פיילוט",
+            "requirements": "מידע אודות התחנה הנוכחית -פיילוט"
+        },
+        {
+            "levelNumber": 3,
+            "stepNumber": 4,
+            "description": "תחנה מס' 4 - פיילוט",
+            "requirements": "מידע אודות התחנה הנוכחית -פיילוט"
+        },
+        {
+            "levelNumber": 3,
+            "stepNumber": 15,
+            "description": "תחנה מס' 15 - פיילוט",
+            "requirements": "מידע אודות התחנה הנוכחית -פיילוט"
+        },
+        {
+            "levelNumber": 3,
+            "stepNumber": 21,
+            "description": "תחנה מס' 21 - פיילוט",
+            "requirements": "מידע אודות התחנה הנוכחית -פיילוט"
+        },
+        {
+            "levelNumber": 4,
+            "stepNumber": 12,
+            "description": "תחנה מס' 12 - פיילוט",
+            "requirements": "מידע אודות התחנה הנוכחית -פיילוט"
+        },
+        {
+            "levelNumber": 4,
+            "stepNumber": 17,
+            "description": "תחנה מס' 17 - פיילוט",
+            "requirements": "מידע אודות התחנה הנוכחית -פיילוט"
+        },
+        {
+            "levelNumber": 4,
+            "stepNumber": 22,
+            "description": "תחנה מס' 22 - פיילוט",
+            "requirements": "מידע אודות התחנה הנוכחית -פיילוט"
+        },
+        {
+            "levelNumber": 4,
+            "stepNumber": 30,
+            "description": "תחנה מס' 30 - פיילוט",
+            "requirements": "מידע אודות התחנה הנוכחית -פיילוט"
+        }
+        
+    ],
+    "medicines":
+    [
+        {
+            "medicineName": "תרופה מס' 1 -פיילוט",
+            "description": "תיאור התרופה הנל",
+            "levels": [ 1, 2],
+            "count": "כדור אחד ביום-",
+            "badInfluence": ["כאבי ראש","בחילות","סחרחורת"],
+            "foodOrNot": "ללא צום",
+            "days": ["ראשון","רביעי","חמישי","שישי","שבת"]
+        },
+        {
+            "medicineName": "תרופה מס' 2 -פיילוט",
+            "description": "תיאור התרופה הנל",
+            "levels": [ 1, 2,3],
+            "count": "שלוש כדורים  ביום -",
+            "badInfluence": ["כאבי ראש","בחילות","סחרחורת"],
+            "foodOrNot": "ללא צום",
+            "days": ["ראשון","שני","שלישי","רביעי","חמישי","שישי","שבת"]
+        },
+        {
+            "medicineName": "תרופה מס' 3 -פיילוט",
+            "description": "תיאור התרופה הנל",
+            "levels": [ 1, 2,3],
+            "count": "20 מל פעם ביום-",
+            "badInfluence": ["כאבי ראש","בחילות","סחרחורת"],
+            "foodOrNot": "ללא צום",
+            "days": ["שני","שלישי","חמישי","שישי","שבת"]
+        },
+        {
+            "medicineName": "תרופה מס' 4 -פיילוט",
+            "description": "תיאור התרופה הנל",
+            "levels": [ 1, 2],
+            "count": "זריקה אחת לשבוע-",
+            "badInfluence": ["כאבי ראש","בחילות","סחרחורת"],
+            "foodOrNot": "ללא צום",
+            "days": ["חמישי"]
+        },
+        {
+            "medicineName": "תרופה מס' 4 -פיילוט",
+            "description": "תיאור התרופה הנל",
+            "levels": [ 1, 2],
+            "count": "זריקה אחת לשבוע-",
+            "badInfluence": ["כאבי ראש","בחילות","סחרחורת"],
+            "foodOrNot": "ללא צום",
+            "days": ["חמישי"]
+        },
+        {
+            "medicineName": "תרופה מס' 5 -פיילוט",
+            "description": "תיאור התרופה הנל",
+            "levels": [ ],
+            "count": "כל 6 שעות לפי הצורך-",
+            "badInfluence": [],
+            "foodOrNot": "ללא צום"
+            
+        },
+        {
+            "medicineName": "תרופה מס' 6 -פיילוט",
+            "description": "תיאור התרופה הנל",
+            "levels": [ ],
+            "count": "כל 12 שעות לפי הצורך-",
+            "badInfluence": [],
+            "foodOrNot": "ללא צום"
+            
+        }
+    ],
+    "videos":
+    [
+        {
+            "videoName": "מהי לוקמיה",
+            "videoDescription": "סרטון זה יסביר לנו מהי לוקמיה בשפה שלנו",
+            "videoUrl": "https://www.youtube.com/watch?v=tVoR8mOuUtg"
+        },
+        {
+            "videoName": "מידע מקיף אודות המחלה",
+            "videoDescription":"כל מה שצריך לדעת על לוקמיה מבחינה מקצועית",
+            "videoUrl": "https://www.youtube.com/watch?v=zJ_iaETqtZU"
+        },
+        {
+            "videoName": "דרכי התמודדות",
+            "videoDescription": "סרטון זה יסביר לנו איך מתמודדים עם לוקמיה",
+            "videoUrl": "https://www.youtube.com/watch?v=zZ_WjEppT2I"
+        }
+
+    ],
+
+    "users":
+    [
+        {
+            "mail": "razielp11@gmail.com",
+            "fullname": "רפאל",
+            "password": "123",
+            "userType": "מטופל"
+        },
+        {
+            "mail": "dazielp11@gmail.com",
+            "fullname": "אריאל",
+            "password": "123",
+            "userType": "מטופל"
+        },
+        {
+            "mail": "uazielp11@gmail.com",
+            "fullname": "דניאל",
+            "password": "123",
+            "userType": "מטופל"
+        },
+        {
+            "mail": "admin@gmail.com",
+            "fullname": "raziel",
+            "password": "123",
+            "userType": "אדמין"
+        }
+    ],
+    "tips":
+    [
+        {
+            "mail":"razielp11@gmail.com",
+            "id":"1w",
+            "content":"תוכן הטיפ",
+            "title":"טיפ מס' 1",
+            "date":"2020-03-30T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"uazielp11@gmail.com",
+            "id":"1q",
+            "content":"תוכן הטיפ",
+            "title":"טיפ מס' 2",
+            "date":"2020-02-20T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"dazielp11@gmail.com",
+            "id":"1r",
+            "content":"תוכן הטיפ",
+            "title":"טיפ מס' 3",
+            "date":"2020-01-30T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"uazielp11@gmail.com",
+            "id":"1t",
+            "content":"תוכן הטיפ",
+            "title":"טיפ מס' 4",
+            "date":"2020-01-20T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"razielp11@gmail.com",
+            "id":"1y",
+            "content":"תוכן הטיפ",
+            "title":"טיפ מס' 5",
+            "date":"2020-01-10T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"razielp11@gmail.com",
+            "id":"1o",
+            "content":"תוכן הטיפ",
+            "title":"טיפ מס' 6",
+            "date":"2020-01-05T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"dazielp11@gmail.com",
+            "id":"1a",
+            "content":"תוכן הטיפ",
+            "title":"טיפ מס' 7",
+            "date":"2020-01-01T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"uazielp11@gmail.com",
+            "id":"2w",
+            "content":"תוכן הטיפ",
+            "title":"טיפ מס' 8",
+            "date":"2021-04-20T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"razielp11@gmail.com",
+            "id":"4r",
+            "content":"תוכן הטיפ",
+            "title":"טיפ מס' 9",
+            "date":"2021-03-30T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"dazielp11@gmail.com",
+            "id":"3d",
+            "content":"תוכן הטיפ",
+            "title":"טיפ מס' 10",
+            "date":"2022-04-40T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"uazielp11@gmail.com",
+            "id":"qw2",
+            "content":"תוכן הטיפ",
+            "title":"טיפ מס' 11",
+            "date":"2022-03-20T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"dazielp11@gmail.com",
+            "id":"8h6",
+            "content":"תוכן הטיפ",
+            "title":"טיפ מס' 12",
+            "date":"2022-01-30T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"uazielp11@gmail.com",
+            "id":"1qa",
+            "content":"תוכן הטיפ",
+            "title":"טיפ מס' 13",
+            "date":"2022-02-30T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"razielp11@gmail.com",
+            "id":"qD",
+            "content":"תוכן הטיפ",
+            "title":"טיפ מס' 14",
+            "date":"2022-04-30T09:13:11.105Z",
+            "label":["2","3"]
+        }
+        
+    ],
+    "successStories":
+    [
+        {
+            "mail":"razielp11@gmail.com",
+            "id":"1w",
+            "content":"תוכן סיפור  הצלחה",
+            "title":"סיפור הצלחה מס' 1",
+            "date":"2020-03-30T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"uazielp11@gmail.com",
+            "id":"1q",
+            "content":"תוכן סיפור  הצלחה",
+            "title":"סיפור הצלחה מס' 2",
+            "date":"2020-02-20T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"dazielp11@gmail.com",
+            "id":"1r",
+            "content":"תוכן סיפור  הצלחה",
+            "title":"סיפור הצלחה מס' 3",
+            "date":"2020-01-30T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"uazielp11@gmail.com",
+            "id":"1t",
+            "content":"תוכן סיפור  הצלחה",
+            "title":"סיפור הצלחה מס' 4",
+            "date":"2020-01-20T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"razielp11@gmail.com",
+            "id":"1y",
+            "content":"תוכן סיפור  הצלחה",
+            "title":"סיפור הצלחה מס' 5",
+            "date":"2020-01-10T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"razielp11@gmail.com",
+            "id":"1o",
+            "content":"תוכן סיפור  הצלחה",
+            "title":"סיפור הצלחה מס' 6",
+            "date":"2020-01-05T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"dazielp11@gmail.com",
+            "id":"1a",
+            "content":"תוכן סיפור  הצלחה",
+            "title":"סיפור הצלחה מס' 7",
+            "date":"2020-01-01T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"uazielp11@gmail.com",
+            "id":"2w",
+            "content":"תוכן סיפור  הצלחה",
+            "title":"סיפור הצלחה מס' 8",
+            "date":"2021-04-20T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"razielp11@gmail.com",
+            "id":"4r",
+            "content":"תוכן סיפור  הצלחה",
+            "title":"סיפור הצלחה מס' 9",
+            "date":"2021-03-30T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"dazielp11@gmail.com",
+            "id":"3d",
+            "content":"תוכן סיפור  הצלחה",
+            "title":"סיפור הצלחה מס' 10",
+            "date":"2022-04-40T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"uazielp11@gmail.com",
+            "id":"qw2",
+            "content":"תוכן סיפור  הצלחה",
+            "title":"סיפור הצלחה מס' 11",
+            "date":"2022-03-20T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"dazielp11@gmail.com",
+            "id":"8h6",
+            "content":"תוכן סיפור  הצלחה",
+            "title":"סיפור הצלחה מס' 12",
+            "date":"2022-01-30T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"uazielp11@gmail.com",
+            "id":"1qa",
+            "content":"תוכן סיפור  הצלחה",
+            "title":"סיפור הצלחה מס' 13",
+            "date":"2022-02-30T09:13:11.105Z",
+            "label":["2","3"]
+        },
+        {
+            "mail":"razielp11@gmail.com",
+            "id":"qD",
+            "content":"תוכן סיפור  הצלחה",
+            "title":"סיפור הצלחה מס' 14",
+            "date":"2022-04-30T09:13:11.105Z",
+            "label":["2","3"]
+        }
+
+    ],
+    "contacts":
+    [
+        {
+            "id": "1q",
+            "mailUser": "dazielp11@gmail.com",
+            "name": "אלון נחמני",
+            "phone": "0546814127",
+            "mail": "alon@gmail.com",
+            "job": "רופא בכיר",
+            "img":"https://www.pngitem.com/pimgs/m/11-113101_people-clipart-svg-person-image-for-powerpoint-hd.png"
+        },
+        {
+            "id": "2q",
+            "mailUser": "dazielp11@gmail.com",
+            "name": "תמר נוי",
+            "phone": "0546111127",
+            "mail": "tamar@gmail.com",
+            "job": "יועצת חינוכית",
+            "img":"https://www.pngitem.com/pimgs/m/11-113101_people-clipart-svg-person-image-for-powerpoint-hd.png"
+        },
+        {
+            "id": "3q",
+            "mailUser": "dazielp11@gmail.com",
+            "name": "יובל אזולאי",
+            "phone": "0501234127",
+            "mail": "yoval@gmail.com",
+            "job": "אחות מקצועית",
+            "img":"https://www.pngitem.com/pimgs/m/11-113101_people-clipart-svg-person-image-for-powerpoint-hd.png"
+        },
+        {
+            "id": "1w",
+            "mailUser": "razielp11@gmail.com",
+            "name": "אלון נחמני",
+            "phone": "0546814127",
+            "mail": "alon@gmail.com",
+            "job": "רופא בכיר",
+            "img":"https://www.pngitem.com/pimgs/m/11-113101_people-clipart-svg-person-image-for-powerpoint-hd.png"
+        },
+        {
+            "id": "2w",
+            "mailUser": "razielp11@gmail.com",
+            "name": "תמר נוי",
+            "phone": "0546111127",
+            "mail": "tamar@gmail.com",
+            "job": "יועצת חינוכית",
+            "img":"https://www.pngitem.com/pimgs/m/11-113101_people-clipart-svg-person-image-for-powerpoint-hd.png"
+        },
+        {
+            "id": "3w",
+            "mailUser": "razielp11@gmail.com",
+            "name": "יובל אזולאי",
+            "phone": "0501234127",
+            "mail": "yoval@gmail.com",
+            "job": "אחות מקצועית",
+            "img":"https://www.pngitem.com/pimgs/m/11-113101_people-clipart-svg-person-image-for-powerpoint-hd.png"
+        },
+        {
+            "id": "1r",
+            "mailUser": "uazielp11@gmail.com",
+            "name": "אלון נחמני",
+            "phone": "0546814127",
+            "mail": "alon@gmail.com",
+            "job": "רופא בכיר",
+            "img":"https://www.pngitem.com/pimgs/m/11-113101_people-clipart-svg-person-image-for-powerpoint-hd.png"
+        },
+        {
+            "id": "2r",
+            "mailUser": "uazielp11@gmail.com",
+            "name": "תמר נוי",
+            "phone": "0546111127",
+            "mail": "tamar@gmail.com",
+            "job": "יועצת חינוכית",
+            "img":"https://www.pngitem.com/pimgs/m/11-113101_people-clipart-svg-person-image-for-powerpoint-hd.png"
+        },
+        {
+            "id": "3r",
+            "mailUser": "uazielp11@gmail.com",
+            "name": "יובל אזולאי",
+            "phone": "0501234127",
+            "mail": "yoval@gmail.com",
+            "job": "אחות מקצועית",
+            "img":"https://www.pngitem.com/pimgs/m/11-113101_people-clipart-svg-person-image-for-powerpoint-hd.png"
+        }
+
+    ],
+    "visits":[
+        {
+            "id": "1q",
+            "mail": "razielp11@gmail.com",
+            "content": "תוכן הביקור",
+            "title": "ביקור מס' 1",
+            "date":"2022-07-20T09:13:11.105Z"
+        },
+        {
+            "id": "2q",
+            "mail": "razielp11@gmail.com",
+            "content": "תוכן הביקור",
+            "title": "ביקור מס' 2",
+            "date":"2022-08-11T09:13:11.105Z"
+        },
+        {
+            "id": "3q",
+            "mail": "razielp11@gmail.com",
+            "content": "תוכן הביקור",
+            "title": "ביקור מס' 3",
+            "date":"2022-011-26T09:13:11.105Z"
+        },
+        {
+            "id": "1r",
+            "mail": "uazielp11@gmail.com",
+            "content": "תוכן הביקור",
+            "title": "ביקור מס' 1",
+            "date":"2022-07-20T09:13:11.105Z"
+        },
+        {
+            "id": "2r",
+            "mail": "uazielp11@gmail.com",
+            "content": "תוכן הביקור",
+            "title": "ביקור מס' 2",
+            "date":"2022-08-11T09:13:11.105Z"
+        },
+        {
+            "id": "2r",
+            "mail": "uazielp11@gmail.com",
+            "content": "תוכן הביקור",
+            "title": "ביקור מס' 3",
+            "date":"2022-011-26T09:13:11.105Z"
+        },
+        {
+            "id": "1t",
+            "mail": "dazielp11@gmail.com",
+            "content": "תוכן הביקור",
+            "title": "ביקור מס' 1",
+            "date":"2022-07-20T09:13:11.105Z"
+        },
+        {
+            "id": "2t",
+            "mail": "dazielp11@gmail.com",
+            "content": "תוכן הביקור",
+            "title": "ביקור מס' 2",
+            "date":"2022-08-11T09:13:11.105Z"
+        },
+        {
+            "id": "3t",
+            "mail": "dazielp11@gmail.com",
+            "content": "תוכן הביקור",
+            "title": "ביקור מס' 3",
+            
+            "date":"2022-011-26T09:13:11.105Z"
+        }
+    ],
+    
+    "workshops":
+    [
+        {
+            "id": "1q",
+            "mail": "razielp11@gmail.com",
+            "content": "תוכן הסדנא",
+            "title": "סדנא מס' 1",
+            "lecturer": "אלון נחמני",
+            "date":"2022-07-20T09:13:11.105Z"
+        },
+        {
+            "id": "2q",
+            "mail": "razielp11@gmail.com",
+            "content": "תוכן הסדנא",
+            "title": "סדנא מס' 2",
+            "lecturer": "דוקטור אורן דולב",
+            "date":"2022-08-11T09:13:11.105Z"
+        },
+        {
+            "id": "3q",
+            "mail": "razielp11@gmail.com",
+            "content": "תוכן הסדנא",
+            "title": "סדנא מס' 3",
+            "lecturer": "שני בוכניק הכהן ",
+            "date":"2022-011-26T09:13:11.105Z"
+        },
+        {
+            "id": "1r",
+            "mail": "uazielp11@gmail.com",
+            "content": "תוכן הסדנא",
+            "title": "סדנא מס' 1",
+            "lecturer": "אלון נחמני",
+            "date":"2022-07-20T09:13:11.105Z"
+        },
+        {
+            "id": "2r",
+            "mail": "uazielp11@gmail.com",
+            "content": "תוכן הסדנא",
+            "title": "סדנא מס' 2",
+            "lecturer": "דוקטור אורן דולב",
+            "date":"2022-08-11T09:13:11.105Z"
+        },
+        {
+            "id": "2r",
+            "mail": "uazielp11@gmail.com",
+            "content": "תוכן הסדנא",
+            "title": "סדנא מס' 3",
+            "lecturer": "שני בוכניק הכהן ",
+            "date":"2022-011-26T09:13:11.105Z"
+        },
+        {
+            "id": "1t",
+            "mail": "dazielp11@gmail.com",
+            "content": "תוכן הסדנא",
+            "title": "סדנא מס' 1",
+            "lecturer": "אלון נחמני",
+            "date":"2022-07-20T09:13:11.105Z"
+        },
+        {
+            "id": "2t",
+            "mail": "dazielp11@gmail.com",
+            "content": "תוכן הסדנא",
+            "title": "סדנא מס' 2",
+            "lecturer": "דוקטור אורן דולב",
+            "date":"2022-08-11T09:13:11.105Z"
+        },
+        {
+            "id": "3t",
+            "mail": "dazielp11@gmail.com",
+            "content": "תוכן הסדנא",
+            "title": "סדנא מס' 3",
+            "lecturer": "שני בוכניק הכהן",
+            "date":"2022-011-26T09:13:11.105Z"
+        }
+    ]
+
+}

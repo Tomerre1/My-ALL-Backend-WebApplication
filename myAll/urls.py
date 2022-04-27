@@ -13,4 +13,5 @@ urlpatterns = [
     path('successStories/',include('successStories.urls')),
     path('visit/',include('visit.urls')),
     path('workshop/',include('workshop.urls')),
+    path('manage/',include('manageDB.urls')),
 ]
