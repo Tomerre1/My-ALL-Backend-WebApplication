@@ -53,13 +53,13 @@ def protocol(request):
     return Response(result)
 
 def allLevelsAndSteps():
-    allStep=Step.objects.filter()
-    allLevel=Level.objects.all()
+    allStep=Step.objects.all()
+    allLevel=Level.objects.all().order_by('levelNumber')
     result=[]
     for level in allLevel:
         levelsir=LevelSerializer(level).data
         tempLevel=[levelsir,]
-        stepOfLevel=allStep.filter(levelNumber=level.levelNumber)
+        stepOfLevel=allStep.filter(levelNumber=level.levelNumber).order_by("stepNumber")
         stepsOfLevelSir=StepSerializer(stepOfLevel,many=True)
         tempLevel+=stepsOfLevelSir.data
         result.append(tempLevel)
