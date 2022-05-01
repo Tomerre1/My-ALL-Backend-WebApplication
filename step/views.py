@@ -135,7 +135,7 @@ def path(mail):
                                 .first()).levelNumber
     
     allStep=StepForUser.objects.filter(mail=mail)
-    allLevel=Level.objects.all()
+    allLevel=Level.objects.all().order_by('levelNumber')
     timeLine=[]
     for level in allLevel:
         levelsir=LevelSerializer(level).data
@@ -144,7 +144,7 @@ def path(mail):
         else:
             levelsir['isDone']=False
         tempLevel=[levelsir,]
-        stepOfLevel=allStep.filter(levelNumber=level.levelNumber)
+        stepOfLevel=allStep.filter(levelNumber=level.levelNumber).order_by("stepNumber")
         stepsOfLevelSir=StepForUserSerializer(stepOfLevel,many=True)
         tempLevel+=stepsOfLevelSir.data
         timeLine.append(tempLevel)
