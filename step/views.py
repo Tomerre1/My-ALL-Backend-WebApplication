@@ -130,12 +130,12 @@ def back(request):
 
 #------------------------------- help functions ----------------------------------#
 def path(mail):
-    currlevel=(StepForUser.objects.filter(mail=mail)
-                                .filter(isCurrStep=True)
-                                .first()).levelNumber
     
     allStep=StepForUser.objects.filter(mail=mail)
+    currlevel=list(filter(lambda x:x.isCurrStep==True,allStep))[0].levelNumber
+    
     allLevel=Level.objects.all().order_by('levelNumber')
+   
     timeLine=[]
     for level in allLevel:
         levelsir=LevelSerializer(level).data
