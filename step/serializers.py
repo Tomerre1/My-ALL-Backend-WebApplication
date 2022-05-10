@@ -4,7 +4,7 @@ from .models import Step,StepForUser
 class StepSerializer(serializers.ModelSerializer):
     class Meta:
         model=Step
-        fields=['levelNumber','stepNumber','description','date','requirements']
+        fields=['levelNumber','stepNumber','description','requirements']
 
 class StepForUserSerializer(serializers.ModelSerializer):
     class Meta:

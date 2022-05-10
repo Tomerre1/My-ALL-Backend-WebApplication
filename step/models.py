@@ -4,7 +4,6 @@ class Step(models.Model):
     levelNumber=models.IntegerField()
     stepNumber=models.IntegerField()
     description=models.CharField(max_length=1500)
-    date=models.DateTimeField(null=True,default=None)
     requirements=models.CharField(max_length=1500,null=True,default=None)
     class Meta:
         unique_together = (('levelNumber', 'stepNumber'),)
