@@ -96,25 +96,24 @@ WSGI_APPLICATION = 'myAll.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 # for mongoDB online
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'djongo',
-#         'CLIENT': {
-#             "host":"mongodb+srv://razielPerez:123123123W@cluster0.8rjuj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-#             ,"name":"project_myAll"
-#             ,"authMechanism":"SCRAM-SHA-1" #For atlas cloud db
-#         }
-#     }
-# }
-
-#for local DB
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'CLIENT': {
+            "host":"mongodb+srv://razielPerez:123123123Wr!@cluster0.uraat.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+            ,"name":"project_myAll"
+            ,"authMechanism":"SCRAM-SHA-1" #For atlas cloud db
+        }
     }
 }
 
+#for local DB
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
