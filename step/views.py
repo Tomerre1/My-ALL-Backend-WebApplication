@@ -84,17 +84,17 @@ def next(request):
     levelNumber=request.data.get('levelNumber')
     stepNumber=request.data.get('stepNumber')
     isNextLevel=request.data.get('isNextLevel')
+
     if isNextLevel:
         nextLevel=int(request.data.get('nextLevel'))
-
         medicineForUser(mail,nextLevel)
+
     newStep=StepForUser.objects.get(mail=mail,levelNumber=levelNumber,stepNumber=stepNumber)
     newStep.isCurrStep=True
     newStep.save()
 
-    # oldStep=(StepForUser.objects.filter(mail=mail)
-    #                             .filter(isCurrStep=True)).first()
-    oldStep=StepForUser.objects.get(mail=mail,isCurrStep=True)
+    
+    oldStep=list(filter(lambda x:x.isCurrStep==True,StepForUser.objects.filter(mail=mail)))[0]
     oldStep.isDone=True
     oldStep.isCurrStep=False
     oldStep.save()
@@ -109,9 +109,9 @@ def back(request):
     isBackLevel=request.data.get('isBackLevel')
     if isBackLevel:
         backLevel=int(request.data.get('backLevel'))
-        medicineForUser(mail,backLevel)# או ככה או פלוס 1 או מינוס 1
+        medicineForUser(mail,backLevel) 
         
-    oldStep=StepForUser.objects.get(mail=mail,isCurrStep=True)
+    oldStep=list(filter(lambda x:x.isCurrStep==True,StepForUser.objects.filter(mail=mail)))[0]
     oldStep.isCurrStep=False
     oldStep.save()
 
