@@ -71,8 +71,9 @@ def privateData(data):
          serializer = UserSerializer(data=i)
          if serializer.is_valid():
             serializer.save()
-            stepForUser(serializer.data)
-            medicineForUser(serializer.data['mail'],1)
+            if(serializer.data["userType"]=="מטופל"):
+                stepForUser(serializer.data)
+                medicineForUser(serializer.data['mail'],1)
 
     for i in data['tips']:
         serializer = TipSerializer(data=i)
